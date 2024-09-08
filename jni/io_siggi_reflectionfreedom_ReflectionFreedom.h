@@ -31,6 +31,294 @@ JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setModi
 JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_allocateObject
   (JNIEnv *, jclass, jclass);
 
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getObjectField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)Ljava/lang/Object;
+ */
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getObjectField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getBooleanField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getBooleanField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getByteField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)B
+ */
+JNIEXPORT jbyte JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getByteField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getCharField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)C
+ */
+JNIEXPORT jchar JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getCharField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getShortField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)S
+ */
+JNIEXPORT jshort JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getShortField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getIntField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)I
+ */
+JNIEXPORT jint JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getIntField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getLongField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)J
+ */
+JNIEXPORT jlong JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getLongField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getFloatField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)F
+ */
+JNIEXPORT jfloat JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getFloatField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getDoubleField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)D
+ */
+JNIEXPORT jdouble JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getDoubleField
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setObjectField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setObjectField
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setBooleanField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;Z)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setBooleanField
+  (JNIEnv *, jclass, jobject, jobject, jboolean);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setByteField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;B)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setByteField
+  (JNIEnv *, jclass, jobject, jobject, jbyte);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setCharField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;C)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setCharField
+  (JNIEnv *, jclass, jobject, jobject, jchar);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setShortField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;S)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setShortField
+  (JNIEnv *, jclass, jobject, jobject, jshort);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setIntField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;I)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setIntField
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setLongField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;J)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setLongField
+  (JNIEnv *, jclass, jobject, jobject, jlong);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setFloatField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;F)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setFloatField
+  (JNIEnv *, jclass, jobject, jobject, jfloat);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setDoubleField
+ * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;D)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setDoubleField
+  (JNIEnv *, jclass, jobject, jobject, jdouble);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticObjectField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)Ljava/lang/Object;
+ */
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticObjectField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticBooleanField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticBooleanField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticByteField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)B
+ */
+JNIEXPORT jbyte JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticByteField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticCharField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)C
+ */
+JNIEXPORT jchar JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticCharField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticShortField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)S
+ */
+JNIEXPORT jshort JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticShortField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticIntField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)I
+ */
+JNIEXPORT jint JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticIntField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticLongField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)J
+ */
+JNIEXPORT jlong JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticLongField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticFloatField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)F
+ */
+JNIEXPORT jfloat JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticFloatField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getStaticDoubleField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;)D
+ */
+JNIEXPORT jdouble JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getStaticDoubleField
+  (JNIEnv *, jclass, jclass, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticObjectField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticObjectField
+  (JNIEnv *, jclass, jclass, jobject, jobject);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticBooleanField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;Z)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticBooleanField
+  (JNIEnv *, jclass, jclass, jobject, jboolean);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticByteField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;B)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticByteField
+  (JNIEnv *, jclass, jclass, jobject, jbyte);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticCharField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;C)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticCharField
+  (JNIEnv *, jclass, jclass, jobject, jchar);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticShortField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;S)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticShortField
+  (JNIEnv *, jclass, jclass, jobject, jshort);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticIntField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;I)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticIntField
+  (JNIEnv *, jclass, jclass, jobject, jint);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticLongField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;J)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticLongField
+  (JNIEnv *, jclass, jclass, jobject, jlong);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticFloatField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;F)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticFloatField
+  (JNIEnv *, jclass, jclass, jobject, jfloat);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    setStaticDoubleField
+ * Signature: (Ljava/lang/Class;Ljava/lang/reflect/Field;D)V
+ */
+JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setStaticDoubleField
+  (JNIEnv *, jclass, jclass, jobject, jdouble);
+
 #ifdef __cplusplus
 }
 #endif
