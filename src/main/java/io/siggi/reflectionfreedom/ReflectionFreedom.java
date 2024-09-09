@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +30,12 @@ public class ReflectionFreedom {
     public static native void setModifiers(AccessibleObject accessibleObject, int modifiers);
 
     public static native <T> T allocateObject(Class<T> clazz);
+
+    public static native Field getField(Class<?> clazz, String name, String signature, boolean isStatic) throws NoSuchFieldException;
+
+    public static native Method getMethod(Class<?> clazz, String name, String signature, boolean isStatic) throws NoSuchMethodException;
+
+    public static native <T> Constructor<T> getConstructor(Class<T> clazz, String signature) throws NoSuchMethodException;
 
     public static native Object getObjectField(Field field, Object object);
 

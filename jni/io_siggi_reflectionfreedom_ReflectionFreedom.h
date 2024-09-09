@@ -33,6 +33,30 @@ JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_allo
 
 /*
  * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getField
+ * Signature: (Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/reflect/Field;
+ */
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getField
+  (JNIEnv *, jclass, jclass, jstring, jstring, jboolean);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getMethod
+ * Signature: (Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/reflect/Method;
+ */
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getMethod
+  (JNIEnv *, jclass, jclass, jstring, jstring, jboolean);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
+ * Method:    getConstructor
+ * Signature: (Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Constructor;
+ */
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getConstructor
+  (JNIEnv *, jclass, jclass, jstring);
+
+/*
+ * Class:     io_siggi_reflectionfreedom_ReflectionFreedom
  * Method:    getObjectField
  * Signature: (Ljava/lang/reflect/Field;Ljava/lang/Object;)Ljava/lang/Object;
  */

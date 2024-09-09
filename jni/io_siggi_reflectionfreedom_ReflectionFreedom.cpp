@@ -1,7 +1,36 @@
+#include <string.h>
 #include "io_siggi_reflectionfreedom_ReflectionFreedom.h"
 
 void throwNPE(JNIEnv* env, const char* message) {
 	env->ThrowNew(env->FindClass("java/lang/NullPointerException"), message);
+}
+
+jobject makeAccessible(JNIEnv* env, jobject accessibleObject) {
+	jclass aoClass = env->GetObjectClass(accessibleObject);
+	jfieldID overrideField = env->GetFieldID(aoClass, "override", "Z");
+	env->SetBooleanField(accessibleObject, overrideField, JNI_TRUE);
+	return accessibleObject;
+}
+
+void rethrow(JNIEnv* env, const char* originalType, const char* newType) {
+	jthrowable thrown = env->ExceptionOccurred();
+	if (thrown == NULL) return;
+
+	jclass thrownClass = env->GetObjectClass(thrown);
+	jclass expectedClass = env->FindClass(originalType);
+	if (!env->IsAssignableFrom(thrownClass, expectedClass)) return;
+
+	env->ExceptionClear();
+
+	jmethodID getMessage = env->GetMethodID(expectedClass, "getMessage", "()Ljava/lang/String;");
+	jobject throwableMessage = env->CallObjectMethod(thrown, getMessage);
+
+	jclass newClass = env->FindClass(newType);
+	jmethodID newThrowableConstructor = env->GetMethodID(newClass, "<init>", "(Ljava/lang/String;)V");
+
+	jthrowable newThrowable = (jthrowable) env->NewObject(newClass, newThrowableConstructor, throwableMessage);
+
+	env->Throw(newThrowable);
 }
 
 JNIEXPORT void JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_setAccessible
@@ -33,6 +62,74 @@ JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_allo
 		return NULL;
 	}
 	return env->AllocObject(classToAllocate);
+}
+
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getField
+  (JNIEnv* env, jclass clazz, jclass classToGetFieldFrom, jstring name, jstring signature, jboolean isStatic) {
+	if (classToGetFieldFrom == NULL || name == NULL || signature == NULL) {
+		throwNPE(env, "Class, field name, and field signature must not be null");
+		return NULL;
+	}
+	const char* fieldName = env->GetStringUTFChars(name, 0);
+	const char* fieldSignature = env->GetStringUTFChars(signature, 0);
+	jfieldID fieldID;
+	if (isStatic == JNI_TRUE) {
+		fieldID = env->GetStaticFieldID(classToGetFieldFrom, fieldName, fieldSignature);
+	} else {
+		fieldID = env->GetFieldID(classToGetFieldFrom, fieldName, fieldSignature);
+	}
+	env->ReleaseStringUTFChars(name, fieldName);
+	env->ReleaseStringUTFChars(signature, fieldSignature);
+	if (fieldID == NULL) {
+		rethrow(env, "java/lang/NoSuchFieldError", "java/lang/NoSuchFieldException");
+		return NULL;
+	}
+	return makeAccessible(env, env->ToReflectedField(classToGetFieldFrom, fieldID, isStatic));
+}
+
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getMethod
+  (JNIEnv* env, jclass clazz, jclass classToGetMethodFrom, jstring name, jstring signature, jboolean isStatic) {
+	if (classToGetMethodFrom == NULL || name == NULL || signature == NULL) {
+		throwNPE(env, "Class, method name, and method signature must not be null");
+		return NULL;
+	}
+	const char* methodName = env->GetStringUTFChars(name, 0);
+	const char* methodSignature = env->GetStringUTFChars(signature, 0);
+	if (strcmp("<init>", methodName) == 0) {
+		env->ReleaseStringUTFChars(name, methodName);
+		env->ReleaseStringUTFChars(signature, methodSignature);
+		env->ThrowNew(env->FindClass("java/lang/NoSuchMethodException"), "Cannot get method with name of <init> - try getConstructor() instead!");
+		return NULL;
+	}
+	jmethodID methodID;
+	if (isStatic == JNI_TRUE) {
+		methodID = env->GetStaticMethodID(classToGetMethodFrom, methodName, methodSignature);
+	} else {
+		methodID = env->GetMethodID(classToGetMethodFrom, methodName, methodSignature);
+	}
+	env->ReleaseStringUTFChars(name, methodName);
+	env->ReleaseStringUTFChars(signature, methodSignature);
+	if (methodID == NULL) {
+		rethrow(env, "java/lang/NoSuchMethodError", "java/lang/NoSuchMethodException");
+		return NULL;
+	}
+	return makeAccessible(env, env->ToReflectedMethod(classToGetMethodFrom, methodID, isStatic));
+}
+
+JNIEXPORT jobject JNICALL Java_io_siggi_reflectionfreedom_ReflectionFreedom_getConstructor
+  (JNIEnv* env, jclass clazz, jclass classToGetConstructorFrom, jstring signature) {
+	if (classToGetConstructorFrom == NULL || signature == NULL) {
+		throwNPE(env, "Class, and constructor signature must not be null");
+		return NULL;
+	}
+	const char* constructorSignature = env->GetStringUTFChars(signature, 0);
+	jmethodID constructorID = env->GetMethodID(classToGetConstructorFrom, "<init>", constructorSignature);
+	env->ReleaseStringUTFChars(signature, constructorSignature);
+	if (constructorID == NULL) {
+		rethrow(env, "java/lang/NoSuchMethodError", "java/lang/NoSuchMethodException");
+		return NULL;
+	}
+	return makeAccessible(env, env->ToReflectedMethod(classToGetConstructorFrom, constructorID, JNI_FALSE));
 }
 
 #define getField(FieldType, JNIMethod, ClassMethod, ReturnOnFail) \
